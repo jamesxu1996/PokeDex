@@ -66,7 +66,7 @@ def self.logo
     ██║     ╚██████╔╝██║  ██╗███████╗██████╔╝███████╗██╔╝ ██╗
     ╚═╝      ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═════╝ ╚══════╝╚═╝  ╚═╝".colorize(:blue)                                                     
 
-    puts "                       RUBY POKEDEX APP".colorize(:yellow)
+    puts "                       " + "RUBY POKEDEX APP".colorize(:color => :blue, :background => :yellow)
 end
 
 
