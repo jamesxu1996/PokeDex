@@ -38,12 +38,11 @@ class Pokedex
 
     def getPokemonSpeciesInfo(pokemonName) 
         res = PokeApi.get(pokemon_species: pokemonName)
-        # replaced_desc1 = res.flavor_text_entries[0].flavor_text.gsub(/\n/," ")
-        # replaced_desc = replaced_desc1.gsub(/\u000c,"")
+        desc = res.flavor_text_entries[0].flavor_text.gsub(/\n/, " ").gsub(/\u000c/, " ")
 
         pokemonInfo = {
             generation: res.generation.name,
-            # description: replaced_desc,
+            description: desc,
         }
         return pokemonInfo.each do |key, value|
             puts key.to_s + " => " + value.to_s
