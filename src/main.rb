@@ -15,4 +15,4 @@ require_relative "./classes/PokeClass.rb"
 charmander = Pokedex.new("charmander")
 charmander.getPokemonGeneralInfo("charmander")
 charmander.getPokemonSpeciesInfo("charmander")
-charmander.get_name
+puts charmander.name

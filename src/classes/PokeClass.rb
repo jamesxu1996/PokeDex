@@ -49,12 +49,6 @@ class Pokedex
             puts key.to_s + " => " + value.to_s
         end
 
-    def get_name
-        @name
-    end   
-
-
-
     end
 
     # ascii = ASCII_Image.new("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png")
