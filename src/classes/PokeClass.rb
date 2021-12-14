@@ -57,10 +57,16 @@ class Pokedex
 
 end
 
+def self.logo
+    puts "
+    ██████╗  ██████╗ ██╗  ██╗███████╗██████╗ ███████╗██╗  ██╗
+    ██╔══██╗██╔═══██╗██║ ██╔╝██╔════╝██╔══██╗██╔════╝╚██╗██╔╝
+    ██████╔╝██║   ██║█████╔╝ █████╗  ██║  ██║█████╗   ╚███╔╝ 
+    ██╔═══╝ ██║   ██║██╔═██╗ ██╔══╝  ██║  ██║██╔══╝   ██╔██╗ 
+    ██║     ╚██████╔╝██║  ██╗███████╗██████╔╝███████╗██╔╝ ██╗
+    ╚═╝      ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═════╝ ╚══════╝╚═╝  ╚═╝".colorize(:blue)                                                     
 
-
-# uri = URI("https://pokeapi.co/api/v2/pokemon/")
-# res = Net::HTTP.get_response(uri)
-# #puts res.body if res.is_a?(Net::HTTPSuccess)
+    puts "                       RUBY POKEDEX APP".colorize(:yellow)
+end
 
 

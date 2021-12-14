@@ -9,10 +9,8 @@ require "colorize"
 require_relative "./classes/PokeClass.rb"
 
 
-# getPokemonGeneralInfo('ho-oh')
-# getPokemonSpeciesInfo('ho-oh')
+self.logo
 
-charmander = Pokedex.new("charmander")
-charmander.getPokemonGeneralInfo("charmander")
-charmander.getPokemonSpeciesInfo("charmander")
-puts charmander.name
+# charmander = Pokedex.new("charmander")
+# charmander.getPokemonGeneralInfo("charmander")
+# charmander.getPokemonSpeciesInfo("charmander")
