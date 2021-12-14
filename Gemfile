@@ -1,0 +1,10 @@
+source "https://rubygems.org"
+
+gem "rubygems"
+gem "json"
+gem "net/http"
+gem "poke-api-v2"
+gem "rmagick"
+gem "ascii-image"
+gem "colorize"
+gem "tty-prompt"
