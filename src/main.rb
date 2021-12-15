@@ -56,7 +56,8 @@ while true
                 end
             when 2
                 puts ("\n") * 2
-                choice = choice.get_all_pokemon_names(choice)
+                # all_pokemon_names = Pokedex.new 
+                all_pokemon_names = self.get_all_pokemon_names
                 puts ("\n") * 2
             when 3
         end

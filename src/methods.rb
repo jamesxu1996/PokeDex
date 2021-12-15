@@ -25,3 +25,20 @@ end
 #     ascii.self.depth = 8
 #     ascii.build(60)    
 # end
+
+def get_all_pokemon_names
+    res = PokeApi.get(pokemon: {limit: 2000,offset: 0 })
+    all_names = []
+
+    res.results.each do |item|
+        all_names << item.name.capitalize
+    end
+
+    pokemon_info = {
+        all_name: all_names.sort,
+    }
+
+    return pokemon_info.each do |key, value|
+        puts key.to_s.capitalize + " => " + value.to_s.capitalize
+    end
+end
