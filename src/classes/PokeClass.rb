@@ -39,17 +39,18 @@ class Pokedex
     end
 
     def get_pokemon_species_info(pokemon_name)
-        # name = PokeApi.get(pokemon: pokemon_name)
-        # name = name.name
         res = PokeApi.get(pokemon_species: pokemon_name)
         evo_id = res.evolution_chain.get.id
         evo_res = PokeApi.get(evolution_chain: evo_id)
         evo_chain = []
-        evo_chain << evo_res.chain.species.name
-        evo_chain << evo_res.chain.evolves_to.first.species.name
-        evo_chain << evo_res.chain.evolves_to.first.evolves_to.first.species.name
+        begin
+            evo_chain << evo_res.chain.species.name
+            evo_chain << evo_res.chain.evolves_to.first.species.name
+            evo_chain << evo_res.chain.evolves_to.first.evolves_to.first.species.name
+        rescue => e
+        end
         desc = res.flavor_text_entries[1].flavor_text.gsub(/\n/, " ").gsub(/\u000c/, " ")
-
+        
         pokemon_info = {
             generation: res.generation.name,
             habitat: res.habitat.name,
