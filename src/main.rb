@@ -22,7 +22,7 @@ self.logo
 #Initiates tty-prompt
 prompt = TTY::Prompt.new
 
-#Obtain and save user_name
+#Obtain and save user_name, re-asks user for input if blank
 begin
     puts ("\n") * 3
     user_name = prompt.ask("Hello Pokemon Trainer! What is your name?")
