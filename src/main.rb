@@ -11,11 +11,6 @@ require_relative "./classes/PokeClass.rb"
 require_relative "./methods.rb"
 
 
-
-# charmander = Pokedex.new("charmander")
-# charmander.getPokemonGeneralInfo("charmander")
-# charmander.getPokemonSpeciesInfo("charmander")
-
 #Generates the Pokedex app logo
 self.logo
 
@@ -49,12 +44,16 @@ while true
         choice = prompt.select("Accessing Pokedex database ... What would you like to do?", choices, cycle: true)
         puts ("\n") * 2
         case choice
-            when 1 
-                choice = prompt.ask("Which Pokemon would you like to search?")
-                choice = choice.downcase
-                search_result = Pokedex.new(choice)
-                search_result.get_pokemon_general_info(choice)
-                search_result.get_pokemon_species_info(choice)
+            when 1
+                begin 
+                    choice = prompt.ask("Which Pokemon would you like to search?")
+                    choice = choice.downcase
+                    search_result = Pokedex.new(choice)
+                    search_result.get_pokemon_general_info(choice)
+                    search_result.get_pokemon_species_info(choice)
+                rescue => e
+                    puts "Not a valid search."
+                end
             when 2
                 puts ("\n") * 2
                 choice = choice.get_all_pokemon_names(choice)
