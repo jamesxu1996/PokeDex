@@ -4,6 +4,7 @@ require "uri"
 require "json"
 require "poke-api-v2"
 require "rmagick"
+require "paint"
 require "ascii-image"
 require "colorize"
 require "tty-prompt"
@@ -52,6 +53,7 @@ while true
                     search_result.get_pokemon_species_info(choice)
                     search_result.get_pokemon_habitat_info(choice)
                     search_result.get_pokemon_desc_info(choice)
+                    search_result.ascii_image(choice)
                 rescue => e
                     puts "Not a valid search."
                 end
@@ -66,6 +68,7 @@ while true
                 search_result.get_pokemon_species_info(choice)
                 search_result.get_pokemon_desc_info(choice)
                 search_result.get_pokemon_habitat_info(choice)
+                search_result.ascii_image(choice)
                 #External PokeApi has some missing habitat values set as NIL, crashes app if not rescued
                 rescue => e
                     puts "Habitat => N/A"

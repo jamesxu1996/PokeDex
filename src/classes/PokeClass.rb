@@ -4,6 +4,7 @@ require "uri"
 require "json"
 require "poke-api-v2"
 require "rmagick"
+require "paint"
 require "ascii-image"
 require "colorize"
 require "tty-prompt"
@@ -25,7 +26,10 @@ class Pokedex
 
         res.types.each do |item| 
             pokemon_type << item.type.name.capitalize
-            # pokemonType.colorize 
+            case item
+            when item == "dragon"
+            item.colorize(:color => :light_white, :background => :magenta)
+            end
         end
 
         pokemon_info = {
@@ -86,6 +90,34 @@ class Pokedex
         return pokemon_info.each do |key, value|
             puts key.to_s.capitalize + " => " + value.to_s.capitalize
         end
+    end
+
+    def ascii_image(pokemon_name)
+        puts ("\n") * 2
+        # res = PokeApi.get(pokemon: pokemon_name)
+        # res = res.sprites.front_default
+        # uri = URI.parse(res)
+        # res = Net::HTTP.get_response(uri)
+    
+        res = PokeApi.get(pokemon: pokemon_name)
+        res = res.sprites.front_default
+        uri = URI.parse(res)
+        response = Net::HTTP.get_response(uri)
+        image = Magick::ImageList.new
+        image.from_blob uri.read
+        image = image.scale(120/ image.columns.to_f)
+        image = image.scale(image.columns, image.rows / 2)
+        cur_row = 0
+        image.each_pixel do |pixel, col, row|
+        color = pixel.to_color(Magick::AllCompliance, false, 8)
+        if cur_row != row
+            puts
+            cur_row = row
+        end
+        print Paint[' ', '', color]
+        end
+        puts
+        puts ("\n") * 2
     end
 end
 
