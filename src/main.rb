@@ -57,8 +57,11 @@ while true
             when 2
                 puts ("\n") * 2
                 all_pokemon_names = self.get_all_pokemon_names
-                prompt.select("Please select a pokemon to view more OR start typing a pokemon name to filter ...", all_pokemon_names, filter: true)
-                
+                choice = prompt.select("Please select a pokemon to view more OR start typing a pokemon name to filter ...", all_pokemon_names, filter: true)
+                choice = choice.downcase
+                search_result = Pokedex.new(choice)
+                search_result.get_pokemon_general_info(choice)
+                search_result.get_pokemon_species_info(choice)
                 puts ("\n") * 2
             when 3
         end
