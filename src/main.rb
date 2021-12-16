@@ -56,8 +56,9 @@ while true
                 end
             when 2
                 puts ("\n") * 2
-                # all_pokemon_names = Pokedex.new 
                 all_pokemon_names = self.get_all_pokemon_names
+                prompt.select("Please select a pokemon to view more OR start typing a pokemon name to filter ...", all_pokemon_names, filter: true)
+                
                 puts ("\n") * 2
             when 3
         end

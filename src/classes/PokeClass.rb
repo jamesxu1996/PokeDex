@@ -65,22 +65,6 @@ class Pokedex
         end
     end
 
-    # def get_all_pokemon_names
-    #     res = PokeApi.get("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=2000")
-    #     all_names = []
-
-    #     res.results.each do |item|
-    #         all_names << item.name.capitalize
-    #     end
-
-    #     pokemon_info = {
-    #         all_name: all_names,
-    #     }
-
-    #     return pokemon_info.each do |key, value|
-    #         puts key.to_s.capitalize + " => " + value.to_s.capitalize
-    #     end
-    # end
 
 end
 
