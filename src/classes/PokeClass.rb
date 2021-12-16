@@ -26,10 +26,6 @@ class Pokedex
 
         res.types.each do |item| 
             pokemon_type << item.type.name.capitalize
-            case item
-            when item == "dragon"
-            item.colorize(:color => :light_white, :background => :magenta)
-            end
         end
 
         pokemon_info = {
@@ -92,6 +88,23 @@ class Pokedex
         end
     end
 
+    def get_pokemon_stats(pokemon_name)
+        res = PokeApi.get(pokemon: pokemon_name)
+
+        pokemon_info = {
+            hp: res.stats[0].base_stat,
+            atk: res.stats[1].base_stat,
+            def: res.stats[2].base_stat,
+            spcl_atk: res.stats[3].base_stat,
+            spcl_def: res.stats[4].base_stat,
+            spd: res.stats[5].base_stat,
+        }
+
+        return pokemon_info.each do |key, value|
+            puts key.to_s.capitalize + " => " + value.to_s.capitalize
+        end
+    end
+
     def ascii_image(pokemon_name)
         puts ("\n") * 2
         res = PokeApi.get(pokemon: pokemon_name)
@@ -114,6 +127,7 @@ class Pokedex
         puts
         puts ("\n") * 2
     end
+
 end
 
 

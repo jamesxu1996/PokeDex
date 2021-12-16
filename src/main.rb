@@ -34,7 +34,7 @@ end
 #Select from prompted choices, allows cycling of menu once selection reaches bottom of options and oves user to specific interface as per selection
 
 while true
-    choices = {"Use Pokedex": 1, "Upload Your Team": 2, "Exit": 3}
+    choices = {"Use Pokedex": 1, "Download Your Team": 2, "Exit": 3}
     puts ("\n") * 2
     choice = prompt.select("Welcome to the Pokedex App Trainer #{user_name}! What would you like to do?", choices, cycle: true)
     case choice
@@ -52,10 +52,11 @@ while true
                     search_result.ascii_image(choice)
                     search_result.get_pokemon_general_info(choice)
                     search_result.get_pokemon_species_info(choice)
-                    search_result.get_pokemon_habitat_info(choice)
+                    search_result.get_pokemon_stats(choice)
                     search_result.get_pokemon_desc_info(choice)
+                    search_result.get_pokemon_habitat_info(choice)
                 rescue => e
-                    puts "Not a valid search."
+                    puts "Not a valid search/Missing data from PokeApi".colorize(:red)
                 end
             when 2
                 begin
@@ -67,11 +68,12 @@ while true
                 search_result.ascii_image(choice)
                 search_result.get_pokemon_general_info(choice)
                 search_result.get_pokemon_species_info(choice)
+                search_result.get_pokemon_stats(choice)
                 search_result.get_pokemon_desc_info(choice)
                 search_result.get_pokemon_habitat_info(choice)
                 #External PokeApi has some missing habitat values set as NIL, crashes app if not rescued
                 rescue => e
-                    puts "Habitat => N/A"
+                    puts "Habitat => N/A".colorize(:red)
                 end
                 puts ("\n") * 2
             when 3
