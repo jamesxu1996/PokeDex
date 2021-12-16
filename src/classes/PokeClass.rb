@@ -94,11 +94,6 @@ class Pokedex
 
     def ascii_image(pokemon_name)
         puts ("\n") * 2
-        # res = PokeApi.get(pokemon: pokemon_name)
-        # res = res.sprites.front_default
-        # uri = URI.parse(res)
-        # res = Net::HTTP.get_response(uri)
-    
         res = PokeApi.get(pokemon: pokemon_name)
         res = res.sprites.front_default
         uri = URI.parse(res)

@@ -49,11 +49,11 @@ while true
                     choice = prompt.ask("Which Pokemon would you like to search?")
                     choice = choice.downcase
                     search_result = Pokedex.new(choice)
+                    search_result.ascii_image(choice)
                     search_result.get_pokemon_general_info(choice)
                     search_result.get_pokemon_species_info(choice)
                     search_result.get_pokemon_habitat_info(choice)
                     search_result.get_pokemon_desc_info(choice)
-                    search_result.ascii_image(choice)
                 rescue => e
                     puts "Not a valid search."
                 end
@@ -64,11 +64,11 @@ while true
                 choice = prompt.select("Please select a pokemon to view more OR start typing a pokemon name to filter ...", all_pokemon_names, filter: true)
                 choice = choice.downcase
                 search_result = Pokedex.new(choice)
+                search_result.ascii_image(choice)
                 search_result.get_pokemon_general_info(choice)
                 search_result.get_pokemon_species_info(choice)
                 search_result.get_pokemon_desc_info(choice)
                 search_result.get_pokemon_habitat_info(choice)
-                search_result.ascii_image(choice)
                 #External PokeApi has some missing habitat values set as NIL, crashes app if not rescued
                 rescue => e
                     puts "Habitat => N/A"
