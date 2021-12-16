@@ -27,7 +27,7 @@ rescue
     puts "Please enter a name."
     retry
 else
-user_name = user_name.capitalize
+    user_name = string_capitalize(user_name)
 end
 
 #Saves menu choices in a variable as a hash of key value pairs
