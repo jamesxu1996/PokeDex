@@ -53,7 +53,6 @@ class Pokedex
         
         pokemon_info = {
             generation: res.generation.name,
-            habitat: res.habitat.name,
             shape: res.shape.name,
             colour: res.color.name,
             evolution_chain: evo_chain,
@@ -65,8 +64,20 @@ class Pokedex
         end
     end
 
+    def get_pokemon_habitat_info(pokemon_name)
+        res = PokeApi.get(pokemon_species: pokemon_name)
 
+        pokemon_info = {
+            habitat: res.habitat.name,
+            # description: desc,
+        }
+
+        return pokemon_info.each do |key, value|
+            puts key.to_s.capitalize + " => " + value.to_s.capitalize
+        end
+    end
 end
+
 
 
 
