@@ -68,7 +68,6 @@ class Pokedex
 
         pokemon_info = {
             habitat: res.habitat.name,
-            # description: desc,
         }
 
         return pokemon_info.each do |key, value|

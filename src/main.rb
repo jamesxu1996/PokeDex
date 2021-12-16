@@ -31,7 +31,6 @@ end
 
 #Saves menu choices in a variable as a hash of key value pairs
 #Select from prompted choices, allows cycling of menu once selection reaches bottom of options and oves user to specific interface as per selection
-#
 
 while true
     choices = {"Use Pokedex": 1, "Upload Your Team": 2, "Exit": 3}
@@ -65,11 +64,11 @@ while true
                 search_result = Pokedex.new(choice)
                 search_result.get_pokemon_general_info(choice)
                 search_result.get_pokemon_species_info(choice)
+                search_result.get_pokemon_desc_info(choice)
                 search_result.get_pokemon_habitat_info(choice)
-                #PokeApi has some missing habitat values set as NIL, crashes app if not rescued
+                #External PokeApi has some missing habitat values set as NIL, crashes app if not rescued
                 rescue => e
                     puts "Habitat => N/A"
-                search_result.get_pokemon_desc_info(choice)
                 end
                 puts ("\n") * 2
             when 3
