@@ -49,14 +49,13 @@ class Pokedex
             evo_chain << evo_res.chain.evolves_to.first.evolves_to.first.species.name
         rescue => e
         end
-        desc = res.flavor_text_entries[1].flavor_text.gsub(/\n/, " ").gsub(/\u000c/, " ")
+        
         
         pokemon_info = {
             generation: res.generation.name,
             shape: res.shape.name,
             colour: res.color.name,
             evolution_chain: evo_chain,
-            description: desc,
         }
 
         return pokemon_info.each do |key, value|
@@ -70,6 +69,19 @@ class Pokedex
         pokemon_info = {
             habitat: res.habitat.name,
             # description: desc,
+        }
+
+        return pokemon_info.each do |key, value|
+            puts key.to_s.capitalize + " => " + value.to_s.capitalize
+        end
+    end
+
+    def get_pokemon_desc_info(pokemon_name)
+        res = PokeApi.get(pokemon_species: pokemon_name)
+        desc = res.flavor_text_entries[1].flavor_text.gsub(/\n/, " ").gsub(/\u000c/, " ")
+
+        pokemon_info = {
+            description: desc,
         }
 
         return pokemon_info.each do |key, value|

@@ -52,6 +52,7 @@ while true
                     search_result.get_pokemon_general_info(choice)
                     search_result.get_pokemon_species_info(choice)
                     search_result.get_pokemon_habitat_info(choice)
+                    search_result.get_pokemon_desc_info(choice)
                 rescue => e
                     puts "Not a valid search."
                 end
@@ -65,8 +66,10 @@ while true
                 search_result.get_pokemon_general_info(choice)
                 search_result.get_pokemon_species_info(choice)
                 search_result.get_pokemon_habitat_info(choice)
+                #PokeApi has some missing habitat values set as NIL, crashes app if not rescued
                 rescue => e
                     puts "Habitat => N/A"
+                search_result.get_pokemon_desc_info(choice)
                 end
                 puts ("\n") * 2
             when 3
