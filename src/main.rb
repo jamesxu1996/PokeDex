@@ -17,6 +17,8 @@ logo
 #Initiates tty-prompt
 prompt = TTY::Prompt.new
 
+table = 
+
 #Obtain and save user_name, re-asks user for input if blank
 begin
     puts ("\n") * 3
@@ -31,15 +33,14 @@ end
 
 #Saves menu choices in a variable as a hash of key value pairs
 #Select from prompted choices, allows cycling of menu once selection reaches bottom of options and oves user to specific interface as per selection
-
 while true
-    choices = {"Use Pokedex": 1, "Download Your Team": 2, "Exit": 3}
+    choices = {"Use Pokedex": 1, "Download Pokemon Team": 2, "Exit": 3}
     puts ("\n") * 2
     choice = prompt.select("Welcome to the Pokedex App Trainer #{user_name}! What would you like to do?", choices, cycle: true)
     case choice
     when 1
         puts ("\n") * 2
-        choices = {"Search Specific Pokemon": 1, "Browse Pokemon Database": 2, "Go Back": 3}
+        choices = {"Search Specific Pokemon": 1, "Browse Pokemon Database": 2, "Search Pokemon With File":3, "Go Back": 4}
         choice = prompt.select("Accessing Pokedex database ... What would you like to do?", choices, cycle: true)
         puts ("\n") * 2
         case choice
@@ -76,11 +77,23 @@ while true
                 end
                 puts ("\n") * 2
             when 3
+                # parse text file, lookup all pokemon names listed in array and save file as JSON
+            when 4
         end
+    #obtains user input and saves pokemon names to array pokemon_name_file
     when 2
         puts ("\n") * 2
-        puts "in progress"
-        #parse json file of pokemon team to pull data for whole team
+        pokemon_name_file = []
+        condition = 1
+        while condition == 1
+            save_pokemon_names = prompt.ask("Please enter a Pokemon name")
+            pokemon_name_file << save_pokemon_names.capitalize.to_s
+            res = prompt.yes?("Add another Pokemon?")
+                if res != true
+                condition = 2
+                puts "Your team is #{pokemon_name_file}"
+                end
+            end
     when 3
         puts ("\n") * 2
         puts "Goodbye Trainer #{user_name}!"

@@ -48,3 +48,14 @@ def write_team
     File.write('./saved_teams/', user_input)
 end
 
+# def save
+#     # save_pokemon_names = prompt.ask("Please enter a Pokemon name")
+#     save_pokemon_names.each do |item|
+#         pokemon_name_file << save_pokemon_names.capitalize.to_s
+#         res = prompt.yes?("Add another Pokemon?")
+#         while res == true
+#             save_pokemon_names = prompt.ask("Please enter a Pokemon name")
+#             pokemon_name_file << save_pokemon_names.capitalize.to_s
+#         end
+#     end
+# end
