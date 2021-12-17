@@ -41,9 +41,3 @@ def string_capitalize(string)
     string.gsub(/\S+/, &:capitalize)
 end
 
-#method to write pokemon team user input to file
-def write_team
-    puts "Please enter"
-    user_input = gets.chomp 
-    File.write('./saved_teams/', user_input)
-end
