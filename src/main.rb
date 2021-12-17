@@ -80,7 +80,7 @@ while true
                 # parse text file, lookup all pokemon names listed in array and save file as JSON
             when 4
         end
-    #obtains user input and saves pokemon names to array pokemon_name_file
+    #obtains user input and saves pokemon names to array pokemon_name_file in ./saved_teams
     when 2
         puts ("\n") * 2
         pokemon_name_file = []
@@ -91,7 +91,13 @@ while true
             res = prompt.yes?("Add another Pokemon?")
                 if res != true
                 condition = 2
+                pokemon_name_file = pokemon_name_file.uniq
                 puts "Your team is #{pokemon_name_file}"
+                puts "What would you like to name your file?"    
+                file_directory_name = gets.chomp
+                file_name = "./saved_teams/#{file_directory_name}.txt"
+                File.write(file_name, pokemon_name_file)
+                pokemon_name_file = []
                 end
             end
     when 3
