@@ -1,0 +1,1 @@
+{:name=>"pikachu", :id=>25, :types=>["Electric"], :generation=>"generation-i", :shape=>"quadruped", :colour=>"yellow", :evolution_chain=>["pichu", "pikachu", "raichu"], :hp=>35, :atk=>55, :def=>40, :spcl_atk=>50, :spcl_def=>50, :spd=>90, :description=>"When several of these POKéMON gather, their electricity could build and cause lightning storms.", :habitat=>"forest"}

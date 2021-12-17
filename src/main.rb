@@ -82,16 +82,24 @@ while true
                 saved_team_file = prompt.select("Select a file", saved_teams_list)
                 choice = File.read("./saved_teams/#{saved_team_file}")
                 choice = choice.gsub(/\W/, ' ').split
+                new_hash = {}
                 begin 
                     choice.each do |item|
                         item = item.downcase
                         search_result = Pokedex.new(item)
                         search_result.paint(item)
-                        search_result.get_pokemon_general_info(item)
-                        search_result.get_pokemon_species_info(item)
-                        search_result.get_pokemon_stats(item)
-                        search_result.get_pokemon_desc_info(item)
-                        search_result.get_pokemon_habitat_info(item)
+                        new_hash.merge!(search_result.get_pokemon_general_info(item))
+                        new_hash.merge!(search_result.get_pokemon_species_info(item))
+                        new_hash.merge!(search_result.get_pokemon_stats(item))
+                        new_hash.merge!(search_result.get_pokemon_desc_info(item))
+                        new_hash.merge!(search_result.get_pokemon_habitat_info(item))
+                        JSON.pretty_generate(new_hash)
+                        puts ("\n") * 2
+                        export_yn = prompt.yes?("Export to file?")
+                        if export_yn == true
+                        file_name = "./saved_teams/#{item.to_s}_export.txt"
+                        File.write(file_name, new_hash)
+                        end
                 rescue => e
                     puts "Not a valid search/Missing data from PokeApi".colorize(:red)
                 end
