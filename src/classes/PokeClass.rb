@@ -105,7 +105,7 @@ class Pokedex
         end
     end
 
-    def ascii_image(pokemon_name)
+    def paint(pokemon_name)
         puts ("\n") * 2
         res = PokeApi.get(pokemon: pokemon_name)
         res = res.sprites.front_default
