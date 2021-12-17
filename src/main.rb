@@ -17,7 +17,7 @@ logo
 #Initiates tty-prompt
 prompt = TTY::Prompt.new
 
-table = 
+# table = 
 
 #Obtain and save user_name, re-asks user for input if blank
 begin
@@ -50,34 +50,53 @@ while true
                     choice = choice.downcase
                     search_result = Pokedex.new(choice)
                     search_result.paint(choice)
-                    save = search_result.get_pokemon_general_info(choice)
-                    save = search_result.get_pokemon_species_info(choice)
-                    save = search_result.get_pokemon_stats(choice)
-                    save = search_result.get_pokemon_desc_info(choice)
-                    save = search_result.get_pokemon_habitat_info(choice)
+                    search_result.get_pokemon_general_info(choice)
+                    search_result.get_pokemon_species_info(choice)
+                    search_result.get_pokemon_stats(choice)
+                    search_result.get_pokemon_desc_info(choice)
+                    search_result.get_pokemon_habitat_info(choice)
                 rescue => e
                     puts "Not a valid search/Missing data from PokeApi".colorize(:red)
                 end
             when 2
                 begin
-                puts ("\n") * 2
-                all_pokemon_names = self.get_all_pokemon_names
-                choice = prompt.select("Please select a pokemon to view more OR start typing a pokemon name to filter ...", all_pokemon_names, filter: true)
-                choice = choice.downcase
-                search_result = Pokedex.new(choice)
-                search_result.paint(choice)
-                search_result.get_pokemon_general_info(choice)
-                search_result.get_pokemon_species_info(choice)
-                search_result.get_pokemon_stats(choice)
-                search_result.get_pokemon_desc_info(choice)
-                search_result.get_pokemon_habitat_info(choice)
-                #External PokeApi has some missing habitat values set as NIL, crashes app if not rescued
+                    puts ("\n") * 2
+                    all_pokemon_names = self.get_all_pokemon_names
+                    choice = prompt.select("Please select a pokemon to view more OR start typing a pokemon name to filter ...", all_pokemon_names, filter: true)
+                    choice = choice.downcase
+                    search_result = Pokedex.new(choice)
+                    search_result.paint(choice)
+                    search_result.get_pokemon_general_info(choice)
+                    search_result.get_pokemon_species_info(choice)
+                    search_result.get_pokemon_stats(choice)
+                    search_result.get_pokemon_desc_info(choice)
+                    search_result.get_pokemon_habitat_info(choice)
+                    #External PokeApi has some missing habitat values set as NIL, crashes app if not rescued
                 rescue => e
                     puts "Habitat => N/A".colorize(:red)
                 end
                 puts ("\n") * 2
             when 3
                 # parse text file, lookup all pokemon names listed in array and save file as JSON
+                saved_teams_list = Dir.entries("./saved_teams").select { |f| File.file? File.join("./saved_teams", f) }
+                saved_team_file = prompt.select("Select a file", saved_teams_list)
+                choice = File.read("./saved_teams/#{saved_team_file}")
+                choice = choice.gsub(/\W/, ' ').split
+                begin 
+                    choice.each do |item|
+                        item = item.downcase
+                        search_result = Pokedex.new(item)
+                        search_result.paint(item)
+                        search_result.get_pokemon_general_info(item)
+                        search_result.get_pokemon_species_info(item)
+                        search_result.get_pokemon_stats(item)
+                        search_result.get_pokemon_desc_info(item)
+                        search_result.get_pokemon_habitat_info(item)
+                rescue => e
+                    puts "Not a valid search/Missing data from PokeApi".colorize(:red)
+                end
+            end
+                puts ("\n") * 2
             when 4
         end
     #obtains user input and saves pokemon names to array pokemon_name_file in ./saved_teams
@@ -87,7 +106,7 @@ while true
         condition = 1
         while condition == 1
             save_pokemon_names = prompt.ask("Please enter a Pokemon name")
-            pokemon_name_file << save_pokemon_names.capitalize.to_s
+            pokemon_name_file << save_pokemon_names.capitalize
             res = prompt.yes?("Add another Pokemon?")
                 if res != true
                 condition = 2
