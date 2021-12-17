@@ -10,7 +10,7 @@ require "colorize"
 require "tty-prompt"
 
 #method to print applicatin logo colourised
-def self.logo
+def logo
     puts "
     ██████╗  ██████╗ ██╗  ██╗███████╗██████╗ ███████╗██╗  ██╗
     ██╔══██╗██╔═══██╗██║ ██╔╝██╔════╝██╔══██╗██╔════╝╚██╗██╔╝
@@ -27,13 +27,9 @@ def get_all_pokemon_names
     res = PokeApi.get(pokemon: {limit: 2000,offset: 0})
     all_names = []
 
-    #remove suffixes from pokeapi name calls to prevent null api call, calls refer to the same data point as non-suffix pokemon names
     res.results.each do |item|
-        all_names << item.name.split("-")[0].to_s.capitalize
+        all_names << item.name.to_s.capitalize
     end
-
-    #removes Aegislash due to known issue with API not pulling correct data
-    all_names.delete("Aegislash")
 
     #return only unique pokemon names from api call
     all_names = all_names.uniq

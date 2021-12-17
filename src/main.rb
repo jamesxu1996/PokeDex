@@ -11,9 +11,8 @@ require "tty-prompt"
 require_relative "./classes/PokeClass.rb"
 require_relative "./methods.rb"
 
-
 #Generates the Pokedex app logo
-self.logo
+logo
 
 #Initiates tty-prompt
 prompt = TTY::Prompt.new
@@ -50,11 +49,11 @@ while true
                     choice = choice.downcase
                     search_result = Pokedex.new(choice)
                     search_result.paint(choice)
-                    search_result.get_pokemon_general_info(choice)
-                    search_result.get_pokemon_species_info(choice)
-                    search_result.get_pokemon_stats(choice)
-                    search_result.get_pokemon_desc_info(choice)
-                    search_result.get_pokemon_habitat_info(choice)
+                    save = search_result.get_pokemon_general_info(choice)
+                    save = search_result.get_pokemon_species_info(choice)
+                    save = search_result.get_pokemon_stats(choice)
+                    save = search_result.get_pokemon_desc_info(choice)
+                    save = search_result.get_pokemon_habitat_info(choice)
                 rescue => e
                     puts "Not a valid search/Missing data from PokeApi".colorize(:red)
                 end

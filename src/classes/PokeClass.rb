@@ -9,10 +9,6 @@ require "ascii-image"
 require "colorize"
 require "tty-prompt"
 
-
-
-
-
 class Pokedex
     attr_accessor :name
 
@@ -39,6 +35,7 @@ class Pokedex
     end
 
     def get_pokemon_species_info(pokemon_name)
+        pokemon_name = pokemon_name.split("-")[0]
         res = PokeApi.get(pokemon_species: pokemon_name)
         evo_id = res.evolution_chain.get.id
         evo_res = PokeApi.get(evolution_chain: evo_id)
@@ -64,6 +61,7 @@ class Pokedex
     end
 
     def get_pokemon_habitat_info(pokemon_name)
+        pokemon_name = pokemon_name.split("-")[0]
         res = PokeApi.get(pokemon_species: pokemon_name)
 
         pokemon_info = {
@@ -76,6 +74,7 @@ class Pokedex
     end
 
     def get_pokemon_desc_info(pokemon_name)
+        pokemon_name = pokemon_name.split("-")[0]
         res = PokeApi.get(pokemon_species: pokemon_name)
         desc = res.flavor_text_entries[1].flavor_text.gsub(/\n/, " ").gsub(/\u000c/, " ")
 
@@ -89,6 +88,7 @@ class Pokedex
     end
 
     def get_pokemon_stats(pokemon_name)
+        # pokemon_name = pokemon_name.split("-")[0]
         res = PokeApi.get(pokemon: pokemon_name)
 
         pokemon_info = {
