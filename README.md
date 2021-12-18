@@ -14,6 +14,8 @@ sh install-dependencies.sh
 ``` 
 Following these commands will install the required gem bundler and associated gems.
 
+The Pokedex application can then be run `sh run.sh`
+
 **System Requirements**
 - AT LEAST Ruby v2.4
 - Runs on Windows, Mac OS or Ubuntu
@@ -59,7 +61,8 @@ From the first set of options, if the user chooses to download team, they will b
 
 By choosing search specific pokemon, the user will be prompted to enter a single name which will return the corresponding data. Browsing the pokemon database will provide a filterable list which when selected, a specific pokemon's details will be outputted. Search pokemon with file will prompt the user to select a specific pokemon file which has been saved using the previously mentioned 'download pokemon team' option. This will then provide a saved JSON file of the corresponding pokemon in that array. Selecting go back or exit will do as the option says; taking the user back to the home screen or exiting the application.
 
-The flowchart below shows how the application operates
+The flowchart below shows how the application operates:
+![Flowchart](docs/Flowchart.png)
 
 ## Implementation Plan
 
