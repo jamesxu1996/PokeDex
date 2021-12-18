@@ -1,0 +1,1 @@
+describe 'poke_class'

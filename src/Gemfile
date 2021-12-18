@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 source "https://rubygems.org"
 
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
-gem "rubygems"
+# gem "rails"
+gem "rspec"
 gem "json"
-gem "net/http"
 gem "poke-api-v2"
 gem "rmagick"
 gem "ascii-image"
