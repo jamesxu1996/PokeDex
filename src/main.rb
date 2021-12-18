@@ -8,7 +8,7 @@ require "paint"
 require "ascii-image"
 require "colorize"
 require "tty-prompt"
-require_relative "./classes/PokeClass.rb"
+require_relative "./classes/Poke_class.rb"
 require_relative "./methods.rb"
 
 #Generates the Pokedex app logo
@@ -16,8 +16,6 @@ logo
 
 #Initiates tty-prompt
 prompt = TTY::Prompt.new
-
-# table = 
 
 #Obtain and save user_name, re-asks user for input if blank
 begin
