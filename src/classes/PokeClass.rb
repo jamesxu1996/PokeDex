@@ -9,6 +9,7 @@ require "ascii-image"
 require "colorize"
 require "tty-prompt"
 
+#Pokedex class
 class Pokedex
     attr_accessor :name
 
@@ -16,6 +17,7 @@ class Pokedex
         @name = name
     end
 
+    #Displays pokemon name, id, types (as array)
     def get_pokemon_general_info(pokemon_name) 
         res = PokeApi.get(pokemon: pokemon_name)
         pokemon_type = []
@@ -34,6 +36,7 @@ class Pokedex
         end
     end
 
+    #Displays pokemon generation, shape, colour, evolution chain (as array)
     def get_pokemon_species_info(pokemon_name)
         pokemon_name = pokemon_name.split("-")[0]
         res = PokeApi.get(pokemon_species: pokemon_name)
@@ -60,6 +63,7 @@ class Pokedex
         end
     end
 
+    #Displays pokemon habitat
     def get_pokemon_habitat_info(pokemon_name)
         pokemon_name = pokemon_name.split("-")[0]
         res = PokeApi.get(pokemon_species: pokemon_name)
@@ -73,6 +77,7 @@ class Pokedex
         end
     end
 
+    #Displays pokemon description info
     def get_pokemon_desc_info(pokemon_name)
         pokemon_name = pokemon_name.split("-")[0]
         res = PokeApi.get(pokemon_species: pokemon_name)
@@ -87,8 +92,8 @@ class Pokedex
         end
     end
 
+    #Displays pokemon stats
     def get_pokemon_stats(pokemon_name)
-        # pokemon_name = pokemon_name.split("-")[0]
         res = PokeApi.get(pokemon: pokemon_name)
 
         pokemon_info = {
@@ -105,6 +110,7 @@ class Pokedex
         end
     end
 
+    #displays pokemon as pixel art
     def paint(pokemon_name)
         puts ("\n") * 2
         res = PokeApi.get(pokemon: pokemon_name)

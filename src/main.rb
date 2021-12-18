@@ -32,7 +32,7 @@ else
 end
 
 #Saves menu choices in a variable as a hash of key value pairs
-#Select from prompted choices, allows cycling of menu once selection reaches bottom of options and oves user to specific interface as per selection
+#Select from prompted choices, allows cycling of menu once selection reaches bottom of options and moves user to specific interface as per selection
 while true
     choices = {"Use Pokedex": 1, "Download Pokemon Team": 2, "Exit": 3}
     puts ("\n") * 2
