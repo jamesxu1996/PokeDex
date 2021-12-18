@@ -9,6 +9,26 @@ require "tty-prompt"
 require_relative "./classes/poke_class.rb"
 require_relative "./methods.rb"
 
+
+if ARGV.length > 0 
+    flag, *rest = ARGV 
+    ARGV.clear
+    case flag
+    when '-help'
+        puts "Check the readme"
+        exit
+    when '-info'
+        puts "Written by James Xu; a simple Pokedex app!"
+        exit
+    when '-version'
+        puts "version 1.0"
+        exit
+    else 
+     puts "Invalid argument, please check documentation"
+     exit 
+    end
+end  
+
 #Generates the Pokedex app logo
 logo
 
