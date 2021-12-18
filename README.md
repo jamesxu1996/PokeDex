@@ -6,11 +6,11 @@ Link to this repo can be found here: https://github.com/jamesxu1996/PokeDex
 
 1. Access the repository from the link: https://github.com/jamesxu1996/PokeDex
 2. Access the `src` folder.
-3. Run the `install.sh` file in the terminal. This can be done like `sh install.sh`
+3. Run the `install-dependencies.sh` file in the terminal. This can be done like `sh install-dependencies.sh`
 
 ```sh
 cd src
-sh install.sh
+sh install-dependencies.sh
 ``` 
 Following these commands will install the required gem bundler and associated gems.
 
